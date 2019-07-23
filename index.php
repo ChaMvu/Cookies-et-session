@@ -1,3 +1,25 @@
+<?php session_start(); ?>
+<?php require 'inc/head.php'; ?>
+<?php
+
+$cookies = [
+    46 => "Pecan nuts",
+    36 => "Chocolate chips",
+    58 => "Chocolate cookie",
+    32 => "M&M's&copy; cookies"
+];
+if (isset($_GET['add_to_cart'])) {
+    if (!isset($_SESSION['cart'])) {
+        $_SESSION['cart'] = array();
+    }
+    if (!isset($_SESSION['cart'][$_GET['add_to_cart']])) {
+        $_SESSION['cart'][$_GET['add_to_cart']] = 1;
+    } else {
+        $_SESSION['cart'][$_GET['add_to_cart']] += 1;
+    }
+}
+?>
+
 <?php require 'inc/head.php'; ?>
 <section class="cookies container-fluid">
   <div class="row">
